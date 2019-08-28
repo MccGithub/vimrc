@@ -63,8 +63,10 @@ set pumheight=10                " Completion window max size
 set nocursorcolumn              " Do not highlight column (speeds up highlighting)
 set nocursorline                " Do not highlight cursor (speeds up highlighting)
 set lazyredraw                  " Wait to redraw
-set background=dark		"background color
-colorscheme hybrid		"colorscheme
+"set background=dark			"background color
+colorscheme 0x7A69_dark 		"colorscheme
+set ts=4
+set mouse=a
 
 " reopening a file
 if has("autocmd")
@@ -79,8 +81,35 @@ endif
 let mapleader=','
 let g:mapleader=','
 
+"let maplocalleader='-'
+"inoremap <localleader>w <ESC>k
+"inoremap <localleader>s <ESC>j 
+"inoremap <localleader>a <ESC>h
+"inoremap <localleader>d <ESC>l
+
+nnoremap <leader>ev :vsplit $MYVIMRC<CR>
+nnoremap <leader>sv :source $MYVIMRC<CR>
+
+"inoremap H <ESC>0
+"inoremap L <ESC>$
+inoremap <ESC> <nop>
+
+inoremap <Down> <nop>
+inoremap <Up> <nop>
+nnoremap <Down> <nop>
+nnoremap <Up> <nop>
+vnoremap <Down> <nop>
+vnoremap <Up> <nop>
+
+inoremap <Left> <nop>
+inoremap <Right> <nop>
+nnoremap <Left> <nop>
+nnoremap <Right> <nop>
+vnoremap <Left> <nop>
+vnoremap <Right> <nop>
+
 inoremap <leader>w <Esc>:w<cr>
-inoremap jj <Esc>`^
+inoremap jj <Esc>
 
 inoremap <leader>w <Esc>:w<cr>
 nnoremap <leader>w :w<cr>
@@ -93,6 +122,11 @@ noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 
+inoremap <leader>sp <ESC>:split<CR>
+inoremap <leader>vp <ESC>:vsplit<CR>
+
+nnoremap <leader>sp :split<CR>
+nnoremap <leader>vp :vsplit<CR>
 " nerdtree
 nnoremap <leader>v :NERDTreeFind<space>
 nnoremap <leader>g :NERDTreeToggle<CR>
@@ -105,7 +139,7 @@ let NERDTreeIgnore=[
 
 let g:ctrlp_map = '<C-p>'
 nmap ss <Plug>(easymotion-s2)
-nnoremap <leader>t :TagbarToggle<Cr>
+nnoremap <leader>t :TagbarToggle<CR>
 " Enable to copy to clipboard for operations like yank, delete, change and put
 " http://stackoverflow.com/questions/20186975/vim-mac-how-to-copy-to-clipboard-without-pbcopy
 if has('unnamedplus')
@@ -126,18 +160,18 @@ map <C-m> :cprevious<CR>
 nnoremap <leader>a :cclose<CR>
 
 " Visual linewise up and down by default (and use gj gk to go quicker)
-noremap <Up> gk
-noremap <Down> gj
-noremap j gj
-noremap k gk
+"noremap <Up> gk
+"noremap <Down> gj
+"noremap j gj
+"noremap k gk
 
 " Search mappings: These will make it so that going to the next one in a
 " search will center on the line it's found in.
-nnoremap n nzzzv
-nnoremap N Nzzzv
+"nnoremap n nzzzv
+"nnoremap N Nzzzv
 
 " Act like D and C
-nnoremap Y y$
+"nnoremap Y y$
 
 " Enter automatically into the files directory
 autocmd BufEnter * silent! lcd %:p:h
@@ -160,56 +194,58 @@ let g:go_highlight_extra_types = 1
 let g:go_highlight_generate_tags = 1
 
 " Open :GoDeclsDir with ctrl-g
-nmap <C-g> :GoDeclsDir<cr>
-imap <C-g> <esc>:<C-u>GoDeclsDir<cr>
+"nmap <C-g> :GoDeclsDir<cr>
+"imap <C-g> <esc>:<C-u>GoDeclsDir<cr>
 
 
 augroup go
   autocmd!
 
   " Show by default 4 spaces for a tab
-  autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
+  "autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
 
   " :GoBuild and :GoTestCompile
-  autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
+  "autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
 
   " :GoTest
-  autocmd FileType go nmap <leader>t  <Plug>(go-test)
+  "autocmd FileType go nmap <leader>t  <Plug>(go-test)
 
   " :GoRun
-  autocmd FileType go nmap <leader>r  <Plug>(go-run)
+  "autocmd FileType go nmap <leader>r  <Plug>(go-run)
 
   " :GoDoc
-  autocmd FileType go nmap <Leader>d <Plug>(go-doc)
+  "autocmd FileType go nmap <Leader>d <Plug>(go-doc)
 
   " :GoCoverageToggle
-  autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
+  "autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
 
   " :GoInfo
-  autocmd FileType go nmap <Leader>i <Plug>(go-info)
+  "autocmd FileType go nmap <Leader>i <Plug>(go-info)
 
   " :GoMetaLinter
-  autocmd FileType go nmap <Leader>l <Plug>(go-metalinter)
+  "autocmd FileType go nmap <Leader>l <Plug>(go-metalinter)
 
   " :GoDef but opens in a vertical split
-  autocmd FileType go nmap <Leader>v <Plug>(go-def-vertical)
+  "autocmd FileType go nmap <Leader>v <Plug>(go-def-vertical)
   " :GoDef but opens in a horizontal split
-  autocmd FileType go nmap <Leader>s <Plug>(go-def-split)
+  "autocmd FileType go nmap <Leader>s <Plug>(go-def-split)
 
   " :GoAlternate  commands :A, :AV, :AS and :AT
-  autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
-  autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
-  autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
-  autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
+ " autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
+ " autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
+ " autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
+ " autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
 augroup END
 
 " build_go_files is a custom function that builds or compiles the test file.
 " It calls :GoBuild if its a Go file, or :GoTestCompile if it's a test file
-function! s:build_go_files()
-  let l:file = expand('%')
-  if l:file =~# '^\f\+_test\.go$'
-    call go#test#Test(0, 1)
-  elseif l:file =~# '^\f\+\.go$'
-    call go#cmd#Build(0)
-  endif
-endfunction
+"function! s:build_go_files()
+"  let l:file = expand('%')
+"  if l:file =~# '^\f\+_test\.go$'
+"    call go#test#Test(0, 1)
+"  elseif l:file =~# '^\f\+\.go$'
+"    call go#cmd#Build(0)
+"  endif
+"endfunction
+
+
