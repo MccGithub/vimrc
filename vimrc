@@ -64,7 +64,7 @@ set nocursorcolumn              " Do not highlight column (speeds up highlightin
 set nocursorline                " Do not highlight cursor (speeds up highlighting)
 set lazyredraw                  " Wait to redraw
 "set background=dark			"background color
-colorscheme 0x7A69_dark 		"colorscheme
+colorscheme darcula 			"colorscheme
 set ts=4
 set mouse=a
 
@@ -123,7 +123,7 @@ noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 
 inoremap <leader>sp <ESC>:split<CR>
-inoremap <leader>vp <ESC>:vsplit<CR>
+inoremap <leader>vp :vsplit<CR>
 
 nnoremap <leader>sp :split<CR>
 nnoremap <leader>vp :vsplit<CR>
