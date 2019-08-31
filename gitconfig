@@ -1,0 +1,19 @@
+[user]
+	email = liuzijian@hoodinn.com
+	name = liuzijian
+[cola]
+	spellcheck = false
+[core]
+	editor = vim
+[color]
+	branch = auto
+[diff]
+	tool = vimdiff
+[alias]
+	co = checkout
+	br = branch -vv
+	ci = commit
+	st = status
+	log1 = log --pretty=format:\"%h %an %ae %ar %cn %s\" -20
+	log2 = log --pretty=format:\"%h %an %ae %ar %cn %s\"
+	cia = commit -a -m

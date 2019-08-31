@@ -28,6 +28,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'brooth/far.vim'
 Plug 'majutsushi/tagbar'
+Plug 'chun-yang/auto-pairs'
 call plug#end()
 
 "base
@@ -80,6 +81,11 @@ endif
 " Set leader shortcut to a comma ','. By default it's the backslash
 let mapleader=','
 let g:mapleader=','
+
+"input something
+"inoremap <leader>( ()<ESC>hi
+"inoremap <leader>" ""<ESC>hi
+
 
 "let maplocalleader='-'
 "inoremap <localleader>w <ESC>k
