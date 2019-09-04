@@ -63,10 +63,10 @@ set pumheight=10                " Completion window max size
 set nocursorcolumn              " Do not highlight column (speeds up highlighting)
 set nocursorline                " Do not highlight cursor (speeds up highlighting)
 set lazyredraw                  " Wait to redraw
-set title
+"set title
 colorscheme darcula 			"colorscheme
 set ts=4
-set mouse=a
+set mouse=""
 
 " reopening a file
 if has("autocmd")
@@ -79,6 +79,7 @@ let g:mapleader=','
 
 inoremap <leader>e <ESC>A
 inoremap <leader>a <ESC>I
+inoremap <leader>c <ESC>2li
 
 nnoremap <leader>ev :vsplit $MYVIMRC<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
@@ -112,17 +113,12 @@ noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 
-inoremap <leader>sp <ESC>:split<CR>
-inoremap <leader>vp <ESC>:vsplit<CR>
-
-nnoremap <leader>sp :split<CR>
-nnoremap <leader>vp :vsplit<CR>
 " nerdtree
 nnoremap <F5> :NERDTreeFind<space>
 nnoremap <F6> :NERDTreeToggle<CR>
 
 let g:NERDTreeDirArrowExpandable = '>'
-let g:NERDTreeDirArrowCollapsible = '|'
+let g:NERDTreeDirArrowCollapsible = ':'
 let NERDTreeShowHidden=1
 
 let NERDTreeIgnore = ['^.git$','^.svn$','\.gitignore$']
