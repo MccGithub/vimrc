@@ -74,12 +74,24 @@ if has("autocmd")
 endif
 
 "leader
-let mapleader=','
-let g:mapleader=','
+let mapleader='-'
+let g:mapleader='-'
+
+inoremap <leader>d <ESC><C-d>
+inoremap <leader>u <ESC><C-u>
+inoremap <leader>b <ESC><C-b>
+inoremap <leader>f <ESC><C-f>
+nnoremap <leader>d <ESC><C-d>
+nnoremap <leader>u <ESC><C-u>
+nnoremap <leader>b <ESC><C-b>
+nnoremap <leader>f <ESC><C-f>
 
 inoremap <leader>e <ESC>A
 inoremap <leader>a <ESC>I
 inoremap <leader>c <ESC>2li
+nnoremap <leader>e <ESC>A
+nnoremap <leader>a <ESC>I
+nnoremap <leader>c <ESC>2li
 
 nnoremap <leader>ev :vsplit $MYVIMRC<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
