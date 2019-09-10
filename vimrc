@@ -11,8 +11,9 @@ Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
-Plug 'fatih/vim-go', { 'tag': '*' }
-Plug 'fatih/molokai', { 'tag': '*' }
+Plug 'fatih/vim-go', {'tag': '*', 'do': ':GoUpdateBinaries'  }
+"Plug 'fatih/vim-go', { 'tag': '*' }
+"Plug 'fatih/molokai', { 'tag': '*' }
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'SirVer/ultisnips'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -28,6 +29,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'brooth/far.vim'
 Plug 'majutsushi/tagbar'
 Plug 'chun-yang/auto-pairs'
+Plug 'elzr/vim-json'
+Plug 'vim-scripts/json-formatter.vim'
 call plug#end()
 
 "base
@@ -45,7 +48,7 @@ set backspace=indent,eol,start  " Makes backspace key more powerful.
 set incsearch                   " Shows the match while typing
 set hlsearch                    " Highlight found searches
 set noerrorbells                " No beeps
-set number                      " Show line numbers
+"set number                      " Show line numbers
 set showcmd                     " Show me what I'm typing
 set noswapfile                  " Don't use swapfile
 set nobackup                    " Don't create annoying backup files
@@ -77,6 +80,11 @@ endif
 let mapleader='-'
 let g:mapleader='-'
 
+
+"format json 
+inoremap <leader>fs <ESC>:call JsonFormatter()<CR>
+nnoremap <leader>fs <ESC>:call JsonFormatter()<CR>
+
 inoremap <leader>e <ESC>A
 inoremap <leader>a <ESC>I
 inoremap <leader>c <ESC>2li
@@ -84,11 +92,14 @@ nnoremap <leader>e <ESC>A
 nnoremap <leader>a <ESC>I
 nnoremap <leader>c <ESC>2li
 
+" fast edit and update .vimrc 
 nnoremap <leader>ev :vsplit $MYVIMRC<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
 
+"set insert mode ESC = nil
 inoremap <ESC> <nop>
 
+"set up Down Right Life = nil
 inoremap <Up> <nop>
 inoremap <Down> <nop>
 inoremap <Right> <nop>
@@ -102,11 +113,9 @@ vnoremap <Down> <nop>
 vnoremap <Right> <nop>
 vnoremap <Left> <nop>
 
-inoremap <leader>w <Esc>:w<cr>
+inoremap <leader>w <Esc>:w<cr> 
+nnoremap <leader>w <Esc>:w<cr> 
 inoremap jj <Esc>
-
-inoremap <leader>w <Esc>:w<cr>
-nnoremap <leader>w :w<cr>
 
 noremap <silent> [b :bprevious<CR>
 noremap <silent> [n :bnext<CR>
@@ -116,12 +125,16 @@ noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 
+inoremap <leader>vp <ESC>:vsplit<CR>
+inoremap <leader>sp <ESC>:split<CR>
+nnoremap <leader>vp <ESC>:vsplit<CR>
+nnoremap <leader>sp <ESC>:split<CR>
 " nerdtree
 nnoremap <F5> :NERDTreeFind<space>
 nnoremap <F6> :NERDTreeToggle<CR>
 
-let g:NERDTreeDirArrowExpandable = '>'
-let g:NERDTreeDirArrowCollapsible = ':'
+"let g:NERDTreeDirArrowExpandable = '>'
+"let g:NERDTreeDirArrowCollapsible = '.'
 let NERDTreeShowHidden=1
 
 let NERDTreeIgnore = ['^.git$','^.svn$','\.gitignore$']
