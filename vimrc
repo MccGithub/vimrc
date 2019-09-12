@@ -16,7 +16,7 @@ Plug 'fatih/vim-go', {'tag': '*', 'do': ':GoUpdateBinaries'  }
 "Plug 'fatih/molokai', { 'tag': '*' }
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'SirVer/ultisnips'
-Plug 'ctrlpvim/ctrlp.vim'
+"Plug 'ctrlpvim/ctrlp.vim'
 Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug '~/my-prototype-plugin'
@@ -141,6 +141,10 @@ let NERDTreeIgnore = ['^.git$','^.svn$','\.gitignore$','\.xlsx$']
 
 let g:ctrlp_map = '<C-p>'
 let g:ctrlp_show_hidden=0
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.xlsx,*.gitignore  
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|wstest|apps|data|genproto|protobuf|svn|vendor|tools)$'
+let g:ctrlp_user_command = 'find %s -type f'   
+
 nmap ss <Plug>(easymotion-s2)
 nnoremap <leader>t :TagbarToggle<CR>
 " Enable to copy to clipboard for operations like yank, delete, change and put
