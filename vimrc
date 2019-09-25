@@ -12,11 +12,8 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 Plug 'fatih/vim-go', {'tag': '*', 'do': ':GoUpdateBinaries'  }
-"Plug 'fatih/vim-go', { 'tag': '*' }
-"Plug 'fatih/molokai', { 'tag': '*' }
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'SirVer/ultisnips'
-"Plug 'ctrlpvim/ctrlp.vim'
 Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug '~/my-prototype-plugin'
@@ -48,7 +45,7 @@ set backspace=indent,eol,start  " Makes backspace key more powerful.
 set incsearch                   " Shows the match while typing
 set hlsearch                    " Highlight found searches
 set noerrorbells                " No beeps
-set number                      " Show line numbers
+"set number                      " Show line numbers
 set showcmd                     " Show me what I'm typing
 set noswapfile                  " Don't use swapfile
 set nobackup                    " Don't create annoying backup files
@@ -66,7 +63,6 @@ set pumheight=10                " Completion window max size
 set nocursorcolumn              " Do not highlight column (speeds up highlighting)
 set nocursorline                " Do not highlight cursor (speeds up highlighting)
 set lazyredraw                  " Wait to redraw
-"set title
 colorscheme darcula 			"colorscheme
 set ts=4
 set mouse=""
@@ -142,7 +138,7 @@ let NERDTreeIgnore = ['^.git$','^.svn$','\.gitignore$','\.xlsx$']
 let g:ctrlp_map = '<C-p>'
 let g:ctrlp_show_hidden=0
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.xlsx,*.gitignore  
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|wstest|apps|data|genproto|protobuf|svn|vendor|tools)$'
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|wstest|apps|data|genproto|protobuf|svn|vendor|tools|json)$'
 let g:ctrlp_user_command = 'find %s -type f'   
 
 nmap ss <Plug>(easymotion-s2)
