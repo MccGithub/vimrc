@@ -45,7 +45,7 @@ set backspace=indent,eol,start  " Makes backspace key more powerful.
 set incsearch                   " Shows the match while typing
 set hlsearch                    " Highlight found searches
 set noerrorbells                " No beeps
-"set number                      " Show line numbers
+set number                      " Show line numbers
 set showcmd                     " Show me what I'm typing
 set noswapfile                  " Don't use swapfile
 set nobackup                    " Don't create annoying backup files
@@ -84,9 +84,6 @@ nnoremap <leader>fs <ESC>:call JsonFormatter()<CR>
 inoremap <leader>e <ESC>A
 inoremap <leader>a <ESC>I
 inoremap <leader>c <ESC>2li
-nnoremap <leader>e <ESC>A
-nnoremap <leader>a <ESC>I
-nnoremap <leader>c <ESC>2li
 
 " fast edit and update .vimrc 
 nnoremap <leader>ev :vsplit $MYVIMRC<CR>
@@ -179,36 +176,26 @@ let g:go_highlight_generate_tags = 1
 
 augroup go
   autocmd!
-
   " Show by default 4 spaces for a tab
   autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
-
   " :GoBuild and :GoTestCompile
   autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
-
   " :GoTest
   autocmd FileType go nmap <leader>t  <Plug>(go-test)
-
   " :GoRun
   autocmd FileType go nmap <leader>r  <Plug>(go-run)
-
   " :GoDoc
   autocmd FileType go nmap <Leader>d <Plug>(go-doc)
-
   " :GoCoverageToggle
   autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
-
   " :GoInfo
   autocmd FileType go nmap <Leader>i <Plug>(go-info)
-
   " :GoMetaLinter
   autocmd FileType go nmap <Leader>l <Plug>(go-metalinter)
-
   " :GoDef but opens in a vertical split
   autocmd FileType go nmap <Leader>v <Plug>(go-def-vertical)
   " :GoDef but opens in a horizontal split
   autocmd FileType go nmap <Leader>s <Plug>(go-def-split)
-
   " :GoAlternate  commands :A, :AV, :AS and :AT
   autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
   autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
