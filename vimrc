@@ -61,7 +61,7 @@ set pumheight=10                " Completion window max size
 set nocursorcolumn              " Do not highlight column (speeds up highlighting)
 set nocursorline                " Do not highlight cursor (speeds up highlighting)
 set lazyredraw                  " Wait to redraw
-colorscheme darcula 			"colorscheme
+colorscheme darcula				"colorscheme
 set ts=4
 set mouse=""
 
@@ -211,3 +211,8 @@ function! s:build_go_files()
     call go#cmd#Build(0)
   endif
 endfunction
+
+augroup l_set
+  autocmd BufNewFile,BufRead *.c setlocal noexpandtab tabstop=4 shiftwidth=4
+  autocmd BufNewFile,BufRead *.cpp setlocal noexpandtab tabstop=4 shiftwidth=4
+augroup END
