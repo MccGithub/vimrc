@@ -61,7 +61,6 @@ set pumheight=10                " Completion window max size
 set nocursorcolumn              " Do not highlight column (speeds up highlighting)
 set nocursorline                " Do not highlight cursor (speeds up highlighting)
 set lazyredraw                  " Wait to redraw
-colorscheme darcula				"colorscheme
 set ts=4
 set mouse=""
 
@@ -86,23 +85,6 @@ inoremap <leader>c <ESC>2li
 " fast edit and update .vimrc 
 nnoremap <leader>ev :vsplit $MYVIMRC<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
-
-"set insert mode ESC = nil
-inoremap <ESC> <nop>
-
-"set up Down Right Life = nil
-inoremap <Up> <nop>
-inoremap <Down> <nop>
-inoremap <Right> <nop>
-inoremap <Left> <nop>
-nnoremap <Up> <nop>
-nnoremap <Down> <nop>
-nnoremap <Right> <nop>
-nnoremap <Left> <nop>
-vnoremap <Up> <nop>
-vnoremap <Down> <nop>
-vnoremap <Right> <nop>
-vnoremap <Left> <nop>
 
 inoremap <leader>w <Esc>:w<cr> 
 nnoremap <leader>w <Esc>:w<cr> 
@@ -151,6 +133,8 @@ if has('persistent_undo')
   set undodir=~/.config/vim/tmp/undo//
 endif
 
+" 将Ctrl+[映射到Esc.
+imap <C-[> <Esc>
 map <C-n> :cnext<CR>
 map <C-m> :cprevious<CR>
 nnoremap <leader>a :cclose<CR>
